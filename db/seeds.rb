@@ -13,8 +13,9 @@ Game.all.destroy
 board = Array.new(20, Array.new(10, 'grass'))
 
 george = User.create!(username: 'maffin', password: 'password')
-User.create!(username: 'trainingfright', password: 'password')
+jon = User.create!(username: 'jonb', password: 'password')
 
-Round.create!(user: george, board: board)
+game1 = Game.create!(winner: jon, loser: george)
+Round.create!(user: george, board: board, game: game1)
 
 
