@@ -2,6 +2,8 @@ class Round < ApplicationRecord
   belongs_to :user
   belongs_to :game
 
+  serialize :board, JSON
+
 
   def fit_checker(starting_position, direction)
 
