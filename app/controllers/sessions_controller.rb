@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
   def new
-    render 'login'
+    render 'new'
   end
 
   def create
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def delete(???)
+  def delete
     logout
 
     redirect_to root_path
