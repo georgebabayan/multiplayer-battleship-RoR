@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MultiplayerBattleshipRor</title>
+    <title>BattleSHEEP!!!</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    <nav class="nav-links">
+      <ul class="nav-ul">
+        <%= link_to "Home", root_path, class: "nav-li"%>
+        <%= link_to "Register", new_user_path, class: "nav-li" %></li>
+        </ul>
+      </nav>
     <%= yield %>
   </body>
 </html>
