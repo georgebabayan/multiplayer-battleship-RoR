@@ -6,33 +6,51 @@ class Round < ApplicationRecord
   # @board = [b1, b2]
 
   #=== fleet ===#
-  
+
   # rows << ['Carrier!', 5, 1]
   # rows << ['Battleship', 4,1]
   # rows << ['Cruiser', 3,1]
   # rows << ['Destroyer', 2,2]
   # rows << ['Submarine', 1,2]
 
-  def fit_checker(s_p, direction, length_of_ship, board)
-    if direction == 'right'
-      return !((board[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep"))
-    elsif direction == 'left'
-      return !((board.transpond[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep"))
+  def fit_checker(arg={})
+    s_p  = arg.s_p
+    direction = arg.direction
+    board = arg.board
+    size_ship = arg.size_ship
+
+    if  direction == 'right'  && ((s_p[0] + size_ship) > board.size)
+      return false
+    elsif  direction == 'down'  && ((s_p[1] + size_ship) > board.size)
+      return false
     end
+
+    if direction == 'right'
+      return !((board[s_p[0]][(s_p[1])..size_ship]).include?("sheep"))
+    elsif direction == 'down'
+      return !((board.transpose[s_p[0]][(s_p[1])..size_ship]).include?("sheep"))
+    end
+
   end
 
 
-  def sheep_placer(s_p, direction,board,ship_length)
+  def sheep_placer(arg={})
+    s_p  = arg.s_p
+    direction = arg.direction
+    board = arg.board
+    size_ship = arg.size_ship
+
+
     row=s_p[0].to_i; col=s_p[1].to_i
     if direction == "down" || direction == 0
       i= 0 ;
-      while i < ship_length
+      while i < size_ship
         board[row+i][col]="sheep"; i+=1
       end
       return board
     elsif direction == "right" || direction == 1
       i= 0 ;
-      while i < ship_length
+      while i < size_ship
         board[row][i+col]="sheep" ; i+=1
       end
 
