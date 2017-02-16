@@ -1,6 +1,7 @@
 class Round < ApplicationRecord
   belongs_to :user
   belongs_to :game
+
   b1 = self.board; b2 = self.board2
   @board = [b1, b2]
 
@@ -27,6 +28,7 @@ class Round < ApplicationRecord
 	  		end 
 	  	end
   
+
   end
 
   def sheep_placer(s_p, direction)
