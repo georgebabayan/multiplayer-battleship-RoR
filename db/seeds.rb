@@ -17,6 +17,4 @@ george = User.create!(username: 'maffin', password: 'password')
 jon = User.create!(username: 'jonb', password: 'password')
 
 game1 = Game.create!(winner: jon, loser: george)
-Round.create!(user: george, board: board, board2: board, game: game1)
-
-
+Side.create!(user: george, board: board, board2: board, game: game1)

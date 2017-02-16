@@ -1,4 +1,4 @@
-class Round < ApplicationRecord
+class Side < ApplicationRecord
   belongs_to :user
   belongs_to :game
   serialize :board, JSON
