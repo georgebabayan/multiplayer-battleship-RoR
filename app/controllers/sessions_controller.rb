@@ -1,22 +1,22 @@
 class SessionsController < ApplicationController
 
   def new
-    render 'login'
+    render 'new'
   end
 
   def create
     @user = User.find_by(username: params[:username])
 
-    if user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       login(@user)
-      redirect_to root_path
+      redirect_to @user
     else
-      @error = "Your username or password are invalid"
+      @errors = "Your username or password are invalid"
       render :new
     end
   end
 
-  def delete(???)
+  def delete
     logout
 
     redirect_to root_path
