@@ -1,0 +1,20 @@
+<h1> SHOW ! </h1>
+
+
+<div>
+  <% @messages.each do |message|  %>
+      <%= message.text %>
+  <% end %>
+</div>
+
+<div class="form">
+  <%= form_for @message do |f| %>
+    <%= f.label :text %><br>
+    <%= f.text_field :text %><br>
+    <% f.hidden @game %><br>
+
+    <br>
+    <%= f.submit %>
+    <% end %>
+
+</div>
