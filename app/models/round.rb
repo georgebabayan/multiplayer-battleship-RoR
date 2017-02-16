@@ -5,6 +5,14 @@ class Round < ApplicationRecord
   # b1 = self.board; b2 = self.board2
   # @board = [b1, b2]
 
+  #=== fleet ===#
+  
+  # rows << ['Carrier!', 5, 1]
+  # rows << ['Battleship', 4,1]
+  # rows << ['Cruiser', 3,1]
+  # rows << ['Destroyer', 2,2]
+  # rows << ['Submarine', 1,2]
+
   def fit_checker(s_p, direction, length_of_ship, board)
     if direction == 'right'
       return !((board[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep"))
@@ -53,147 +61,6 @@ class Round < ApplicationRecord
 
   def winner?
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
