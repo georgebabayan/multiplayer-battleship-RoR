@@ -6,19 +6,10 @@ class Round < ApplicationRecord
   # @board = [b1, b2]
 
   def fit_checker(s_p, direction, length_of_ship, board)
-
     if direction == 'right'
-      if (board[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep")
-        return false
-      else
-        return true
-      end
+      return !((board[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep"))
     elsif direction == 'left'
-      if (board.transpond[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep")
-        return false
-      else
-        return true
-      end
+      return !((board.transpond[s_p[0]][(s_p[1])..length_of_ship]).include?("sheep"))
     end
   end
 
