@@ -23,14 +23,14 @@ class Fun < ApplicationRecord
   # rows << ['Submarine', 1,2]
 
   def fit_checker(args={})
-    s_p  = args["s_p"]
-    direction = args["direction"]
-    size_ship = args["size_ship"]
-    board = args["board"]
+    p s_p  = args["s_p"]
+    p direction = args["direction"]
+    p size_ship = args["size_ship"]
+    p board = args["board"]
 
     if  direction == 'right'  && ((s_p[0] + size_ship) > board.size)
       return false
-    elsif  direction == 'down'  && ((s_p[1] + size_ship) > board.size)
+    elsif  direction == 'down'  && ((s_p[1].to_i + size_ship) > board.size)
       return false
     end
 
@@ -42,30 +42,32 @@ class Fun < ApplicationRecord
 
   end
 
-#args={"s_p" => [1,1],"direction"=>"right", "size_ship"=>4 }
+#args={"s_p" => [0,0],"direction"=>"right", "size_ship"=>4, 'board' => Fun.last.board2_display }
   def sheep_placer(args={})
-    s_p  = args["s_p"]
-    direction = args["direction"]
-    size_ship = args["size_ship"]
-    board = args["board"]
+    if fit_checker(args)
+      p s_p  = args["s_p"]
+      p direction = args["direction"]
+      p size_ship = args["size_ship"]
+      p board = args["board"]
 
 
-    row=s_p[0].to_i; col=s_p[1].to_i
-    if direction == "down" || direction == 0
-      i= 0 ;
-      while i < size_ship
-        board[row+i][col]="sheep"; i+=1
+      row=s_p[0].to_i; col=s_p[1].to_i
+      if direction == "down" || direction == 0
+        i= 0 ;
+        while i < size_ship
+          board[row+i][col]="sheep"; i+=1
+        end
+        return board
+      elsif direction == "right" || direction == 1
+        i= 0 ;
+        while i < size_ship
+          board[row][i+col]="sheep" ; i+=1
+        end
+
+        return board
+      else
+        return "Wrong input!!"
       end
-      return board
-    elsif direction == "right" || direction == 1
-      i= 0 ;
-      while i < size_ship
-        board[row][i+col]="sheep" ; i+=1
-      end
-
-      return board
-    else
-      return "Wrong input!!"
     end
   end
 

@@ -24,7 +24,7 @@ board3 = Array.new(10)  {Array.new(10, 'grass')}
 board4 = Array.new(10)  {Array.new(10, 'grass')}
 
 
-fun1 = Fun.create!(board1: board1, board2: board2,
+Fun.create!(board1: board1, board2: board2,
 board1_display: board3, board2_display: board4, player1: george, player2: jon)
 
 # fun2 = Fun.create!(board1: board1, board2: board2,

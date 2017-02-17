@@ -1,4 +1,4 @@
-<meta http-equiv="refresh" content="7" >
+<!-- <meta http-equiv="refresh" content="7" > -->
 <h1> SHOW ! </h1>
 <div class="left-board">
 <% if logged_in? %>
@@ -62,13 +62,49 @@
 
   <% if logged_in? %>
 
+
+          <form action="/funs/<%= @fun.id %>" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            Ship Size: <input type='text' name='size_ship' /><br />
+            Direction: <input type="text" name='direction' /><br />
+
+            Starting Coords: <select name='s_p_x'>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+            <select name='s_p_y'>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+            <input type='submit' value="Place"/>
+
+          </form>
+
           <% if current_user.username == @fun.player2.username %>
           <p>Form 2</p>
-          <form>
+          <form action="/funs/<%= @fun.id %>" method="post">
+            <input type="hidden" name="_method" value="PUT">
            X:<br>
            <input type="text" name="X"><br>
            Y:<br>
            <input type="text" name="Y">
+           <input type="submit" value="FIRE!">
        </form>
           <% end %>
   <% end %>
