@@ -27,7 +27,7 @@ class Fun < ApplicationRecord
     p direction = args["direction"]
     p size_ship = args["size_ship"]
     p board = args["board"]
-
+return true
     if  direction == 'right'  && ((s_p[0] + size_ship) > board.size)
       return false
     elsif  direction == 'down'  && ((s_p[1].to_i + size_ship) > board.size)
@@ -86,6 +86,14 @@ class Fun < ApplicationRecord
       count += row.count("sheep")
     end
     total_number_of_sheep == count
+  end
+
+  def sheep_on_board?(board)
+    count=0; total_number_of_sheep=18
+    board.each do |row|
+      count += row.count("sheep")
+    end
+    total_number_of_sheep < count
   end
 
   def winner?
