@@ -1,8 +1,0 @@
-<h1> GAME ! </h1>
-
-
-<% @games.each do |game| %>
-  <%= game.name %>
-  <%= game.created_at %>
-  <a href="/games/<%= game.id %>"> click me </a>
-<% end %>

@@ -10,55 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217025148) do
+ActiveRecord::Schema.define(version: 20170217041434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_conversations_on_game_id", using: :btree
-  end
-
-  create_table "games", force: :cascade do |t|
-    t.integer  "winner_id"
-    t.integer  "loser_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "name"
+  create_table "funs", force: :cascade do |t|
+    t.text     "board1"
+    t.text     "board2"
+    t.text     "board1_display"
+    t.text     "board2_display"
+    t.integer  "turn"
     t.integer  "player1_id"
     t.integer  "player2_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["player1_id"], name: "index_funs_on_player1_id", using: :btree
+    t.index ["player2_id"], name: "index_funs_on_player2_id", using: :btree
   end
 
   create_table "messages", force: :cascade do |t|
     t.string   "text"
     t.integer  "user_id"
-    t.integer  "conversation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
-  end
-
-  create_table "sides", force: :cascade do |t|
-    t.integer  "user_id"
-    t.text     "board"
+    t.integer  "fun_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "game_id"
-    t.index ["game_id"], name: "index_sides_on_game_id", using: :btree
-    t.index ["user_id"], name: "index_sides_on_user_id", using: :btree
-  end
-
-  create_table "stages", force: :cascade do |t|
-    t.integer  "game_id"
-    t.text     "player1_move"
-    t.text     "player2_move"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["game_id"], name: "index_stages_on_game_id", using: :btree
+    t.index ["fun_id"], name: "index_messages_on_fun_id", using: :btree
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,10 +46,6 @@ ActiveRecord::Schema.define(version: 20170217025148) do
     t.datetime "updated_at",      null: false
   end
 
-  add_foreign_key "conversations", "games"
-  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "funs"
   add_foreign_key "messages", "users"
-  add_foreign_key "sides", "games"
-  add_foreign_key "sides", "users"
-  add_foreign_key "stages", "games"
 end

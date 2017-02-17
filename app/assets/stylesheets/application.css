@@ -23,6 +23,20 @@
  *    IE on Windows Phone and in iOS.
  */
 
+
+.left-board {
+  float: left;
+}
+
+
+.right-board {
+  float: right;
+}
+
+
+
+
+
 /* Document
    ========================================================================== */
 
