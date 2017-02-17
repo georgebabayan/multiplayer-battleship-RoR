@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :users
-  resources :games
+  resources :games do
+    resources :stages, only: 'game_stages'
+  end
   resources :messages
 
 
