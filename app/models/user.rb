@@ -7,4 +7,14 @@ class User < ApplicationRecord
 
 	validates :username, presence: true
 	validates :username, uniqueness: true
+
+
+	after_initialize :init
+
+
+  def init
+    self.game_won = 0
+    self.game_lost = 0
+  end
+
 end

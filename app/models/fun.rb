@@ -74,10 +74,7 @@ class Fun < ApplicationRecord
     if board[row][col] == "grass"
       board[row][col]="miss_ground"
     elsif board[row][col]=="sheep"
-      board[row][col]="DeadSheep"
-    else
-      board[row][col]="!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-
+      board[row][col]="dead_sheep"
     end
   end
 
