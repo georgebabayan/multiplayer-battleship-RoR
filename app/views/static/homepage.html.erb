@@ -1,0 +1,12 @@
+<h1>BATTLE SHEEP!</h1>
+<p>Home Page</p>
+
+<table background="grass.png">
+		<% @board.each do |row| %>
+		<tr>
+			<% row.each do |cel| %>
+			<td><%= cel %></td>
+			<% end %>
+		</tr>
+		<% end %>
+</table>
