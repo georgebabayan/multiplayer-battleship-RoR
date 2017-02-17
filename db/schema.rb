@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170217041434) do
+ActiveRecord::Schema.define(version: 20170217201556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170217041434) do
     t.integer  "player2_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.boolean  "game_status"
     t.index ["player1_id"], name: "index_funs_on_player1_id", using: :btree
     t.index ["player2_id"], name: "index_funs_on_player2_id", using: :btree
   end
@@ -44,6 +45,8 @@ ActiveRecord::Schema.define(version: 20170217041434) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "game_lost"
+    t.integer  "game_won"
   end
 
   add_foreign_key "messages", "funs"

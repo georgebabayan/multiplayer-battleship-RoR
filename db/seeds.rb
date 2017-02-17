@@ -19,9 +19,9 @@ jon = User.create!(username: 'jonb', password: 'password')
 
 
 board1 = Array.new(10)  {Array.new(10, 'grass')}
-board2 = Array.new(10)  {Array.new(10, 'sheep')}
-board3 = Array.new(10)  {Array.new(10, 'pigs')}
-board4 = Array.new(10)  {Array.new(10, 'pop')}
+board2 = Array.new(10)  {Array.new(10, 'grass')}
+board3 = Array.new(10)  {Array.new(10, 'grass')}
+board4 = Array.new(10)  {Array.new(10, 'grass')}
 
 
 fun1 = Fun.create!(board1: board1, board2: board2,
