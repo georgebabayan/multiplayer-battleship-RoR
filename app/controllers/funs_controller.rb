@@ -31,9 +31,9 @@ class FunsController < ApplicationController
 		else
 			position = [params[:X].to_i, params[:Y].to_i]
 			if current_user.username == @fun.player1.username
-				@fun.sheep_shooter(position, @fun.board1_display)
-			else
 				@fun.sheep_shooter(position, @fun.board2_display)
+			else
+				@fun.sheep_shooter(position, @fun.board1_display)
 			end
 		end
 		@fun.save
