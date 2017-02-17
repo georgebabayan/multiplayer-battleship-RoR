@@ -1,9 +1,16 @@
+<meta http-equiv="refresh" content="7" >
 <h1> SHOW ! </h1>
 
 
+
+<% @game.sides.first.board.each do |row| %>
+<%= row %><br>
+<% end %>
+
 <div>
   <% @messages.each do |message|  %>
-      <%= message.text %>
+  <%= message.text %> <br>
+  <%= message.user.username %>
   <% end %>
 </div>
 
@@ -11,7 +18,6 @@
   <%= form_for @message do |f| %>
     <%= f.label :text %><br>
     <%= f.text_field :text %><br>
-    <% f.hidden @game %><br>
 
     <br>
     <%= f.submit %>

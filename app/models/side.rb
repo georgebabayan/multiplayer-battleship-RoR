@@ -2,8 +2,8 @@ class Side < ApplicationRecord
   belongs_to :user
   belongs_to :game
   serialize :board, JSON
-  # b1 = self.board; b2 = self.board2
-  # @board = [b1, b2]
+  # b1 = self.self.board; b2 = self.self.board2
+  # @self.board = [b1, b2]
 
   #=== fleet ===#
 
@@ -13,65 +13,63 @@ class Side < ApplicationRecord
   # rows << ['Destroyer', 2,2]
   # rows << ['Submarine', 1,2]
 
-  def fit_checker(arg={})
-    s_p  = arg.s_p
-    direction = arg.direction
-    board = arg.board
-    size_ship = arg.size_ship
+  def fit_checker(args={})
+    s_p  = args["s_p"]
+    direction = args["direction"]
+    size_ship = args["size_ship"]
 
-    if  direction == 'right'  && ((s_p[0] + size_ship) > board.size)
+    if  direction == 'right'  && ((s_p[0] + size_ship) > self.board.size)
       return false
-    elsif  direction == 'down'  && ((s_p[1] + size_ship) > board.size)
+    elsif  direction == 'down'  && ((s_p[1] + size_ship) > self.board.size)
       return false
     end
 
     if direction == 'right'
-      return !((board[s_p[0]][(s_p[1])..size_ship]).include?("sheep"))
+      return !((self.board[s_p[0]][(s_p[1])..size_ship]).include?("sheep"))
     elsif direction == 'down'
-      return !((board.transpose[s_p[0]][(s_p[1])..size_ship]).include?("sheep"))
+      return !((self.board.transpose[s_p[0]][(s_p[1])..size_ship]).include?("sheep"))
     end
 
   end
 
-
-  def sheep_placer(arg={})
-    s_p  = arg.s_p
-    direction = arg.direction
-    board = arg.board
-    size_ship = arg.size_ship
+#args={"s_p" => [1,1],"direction"=>"right", "size_ship"=>4 }
+  def sheep_placer(args={})
+    s_p  = args["s_p"]
+    direction = args["direction"]
+    size_ship = args["size_ship"]
 
 
     row=s_p[0].to_i; col=s_p[1].to_i
     if direction == "down" || direction == 0
       i= 0 ;
       while i < size_ship
-        board[row+i][col]="sheep"; i+=1
+        self.board[row+i][col]="sheep"; i+=1
       end
-      return board
+      return self.board
     elsif direction == "right" || direction == 1
       i= 0 ;
       while i < size_ship
-        board[row][i+col]="sheep" ; i+=1
+        self.board[row][i+col]="sheep" ; i+=1
       end
 
-      return board
+      return self.board
     else
       return "Wrong input!!"
     end
   end
 
-  def sheep_shooter(position,board)
+  def sheep_shooter(position)
     row=position[0].to_i; col=position[1].to_i
-    if board[row][col] == "grass"
-      board[row][col]="miss_ground"
-    else
-      board[row][col]="DeadSheep"
+    if self.self.board[row][col] == "grass"
+      self.self.board[row][col]="miss_ground"
+    elsif self.self.board[row][col]=="sheep"
+      self.self.board[row][col]="DeadSheep"
     end
   end
 
-  def finished?(board)
+  def finished?
     count=0; total_number_of_sheep=31
-    board.each do |row|
+    self.board.each do |row|
       count += row.count("sheep")
     end
     total_number_of_sheep == count
