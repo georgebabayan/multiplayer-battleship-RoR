@@ -1,86 +1,79 @@
 <!-- <meta http-equiv="refresh" content="7" > -->
 <h1> SHOW ! </h1>
-<div class="left-board">
 <% if logged_in? %>
+<div class="left-board">
     <%= current_user.username %> <br>
 
         <% if current_user.username == @fun.player1.username %>
+
+        <p> ENEMY FIELD<p>
+          <p>
+            board2_display
+          </p>
+
+          <% @fun.board2_display.each do |row| %>
+          <%= row %>
+          <br>
+          <% end %>
+          <br>
                 <p> YOUR FIELD<p>
+                  <p>
+                    board1
+                  </p>
 
                 <% @fun.board1.each do |row| %>
                 <%= row %><br>
                 <% end %>
                 <br>
-                <br>
-
-
-
-                <p> ENEMY FIELD<p>
-
-              <% @fun.board1_display.each do |row| %>
-              <%= row %>
-              <br>
-              <% end %>
 
        <% end %>
-
-
       <% if current_user.username == @fun.player2.username %>
-      <p> YOUR FIELD<p>
-
-          <% @fun.board2.each do |row| %>
-          <%= row %><br>
-          <% end %>
-          <br>
           <br>
           <p> ENEMY FIELD<p>
-          <% @fun.board2_display.each do |row| %>
+            <p>
+              board1_display
+            </p>
+          <% @fun.board1_display.each do |row| %>
           <%= row %><br>
 
       <% end %>
+      <p> YOUR FIELD<p>
+        <p>
+          board2
+        </p>
+        <% @fun.board2.each do |row| %>
+        <%= row %><br>
+        <% end %>
+        <br>
 
       <% end %>
-<% end %>
 </div>
+
+
 <div class="right-board">
+<% if current_user.username == @fun.player1.username %>
 
-  <% if logged_in? %>
-
-          <% if current_user.username == @fun.player1.username %>
-             <p>Form 1</p>
-             <form action="/funs/<%= @fun.id %>" method="post">
-               <input type="hidden" name="_method" value="PUT">
-
-              X:<br>
-              <input type="text" name="X"><br>
-              Y:<br>
-              <input type="text" name="Y">
-              <input type="submit" value="FIRE!">
-          </form>
-          <% end %>
-  <% end %>
-
-  <% if logged_in? %>
-
-
+  <% if (@fun.sheep_on_board?(@fun.board1) == false) %>
+  <p >FORM </p >
           <form action="/funs/<%= @fun.id %>" method="post">
             <input type="hidden" name="_method" value="PUT">
             Ship Size: <input type='text' name='size_ship' /><br />
             Direction: <input type="text" name='direction' /><br />
 
-            Starting Coords: <select name='s_p_x'>
-              <option value="0">0</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-            </select>
+            Starting Coords:
             <select name='s_p_y'>
+              <option value="0">A</option>
+              <option value="1">B</option>
+              <option value="2">C</option>
+              <option value="3">D</option>
+              <option value="4">E</option>
+              <option value="5">F</option>
+              <option value="6">G</option>
+              <option value="7">H</option>
+              <option value="8">I</option>
+              <option value="9">J</option>
+            </select>
+      <select name='s_p_x'>
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -96,19 +89,83 @@
 
           </form>
 
-          <% if current_user.username == @fun.player2.username %>
-          <p>Form 2</p>
+          <% elsif (@fun.sheep_on_board?(@fun.board2) == false)%>
+
+
+        <p>Fire 1</p>
+        <form action="/funs/<%= @fun.id %>" method="post">
+          <input type="hidden" name="_method" value="PUT">
+
+          X:<br>
+          <input type="text" name="X"><br>
+          Y:<br>
+          <input type="text" name="Y">
+          <input type="submit" value="FIRE!">
+        </form>
+
+
+  <% end %>
+<% end %>
+
+  <% if current_user.username == @fun.player2.username %>
+    <% if (@fun.sheep_on_board?(@fun.board2) == false) %>
+
+
+          <p >
+            FORM 2
+          </p >
           <form action="/funs/<%= @fun.id %>" method="post">
             <input type="hidden" name="_method" value="PUT">
-           X:<br>
-           <input type="text" name="X"><br>
-           Y:<br>
-           <input type="text" name="Y">
-           <input type="submit" value="FIRE!">
-       </form>
+            Ship Size: <input type='text' name='size_ship' /><br />
+            Direction: <input type="text" name='direction' /><br />
+
+            Starting Coords:
+            <select name='s_p_y'>
+              <option value="0">A</option>
+              <option value="1">B</option>
+              <option value="2">C</option>
+              <option value="3">D</option>
+              <option value="4">E</option>
+              <option value="5">F</option>
+              <option value="6">G</option>
+              <option value="7">H</option>
+              <option value="8">I</option>
+              <option value="9">J</option>
+            </select>
+      <select name='s_p_x'>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+            <input type='submit' value="Place"/>
+              <% elsif  (@fun.sheep_on_board?(@fun.board1) == false) %>
+          </form>
+
+          <p>Fire 2</p>
+          <form action="/funs/<%= @fun.id %>" method="post">
+          <input type="hidden" name="_method" value="PUT">
+          X:<br>
+          <input type="text" name="X"><br>
+          Y:<br>
+          <input type="text" name="Y">
+          <input type="submit" value="FIRE!">
+        </form>
+
+
           <% end %>
-  <% end %>
+<% end %>
 
 
 
 </div>
+
+
+
+<% end %>
