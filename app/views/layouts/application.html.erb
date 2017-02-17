@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Ropa+Sans" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -22,6 +23,7 @@
           <ul class="nav-ul">
             <%= link_to "Home", root_path, class: "nav-li"%>
             <%= link_to "Profile", user_path(current_user), class: "nav-li" %></li>
+            <%= link_to "New Game", @game, class: "nav-li" %></li>
             <%= link_to "Logout", logout_path, class: "nav-li" %></li>
             </ul>
           </nav>
