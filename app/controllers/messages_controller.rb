@@ -4,7 +4,8 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message][:text], user: current_user, conversation: params[:game])
+    @game = current_user.games.last
+    @message = Message.new(text: params[:message][:text], user: current_user, conversation: @game.conversation)
 
     if @message.save
       redirect_to "/games/1"
