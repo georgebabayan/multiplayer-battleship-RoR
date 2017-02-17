@@ -1,0 +1,26 @@
+<meta http-equiv="refresh" content="7" >
+<h1> SHOW ! </h1>
+
+
+
+<% @game.sides.first.board.each do |row| %>
+<%= row %><br>
+<% end %>
+
+<div>
+  <% @messages.each do |message|  %>
+  <%= message.text %> <br>
+  <%= message.user.username %>
+  <% end %>
+</div>
+
+<div class="form-chat">
+  <%= form_for @message do |f| %>
+    <%= f.label :text %><br>
+    <%= f.text_field :text %><br>
+
+    <br>
+    <%= f.submit %>
+    <% end %>
+
+</div>
