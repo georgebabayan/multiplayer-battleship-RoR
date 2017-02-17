@@ -1,0 +1,7 @@
+<h1> FUN ! </h1>
+
+
+<% @funs.each do |fun| %>
+  <%= fun.created_at %>
+  <a href="/funs/<%= fun.id %>"> click me </a>
+<% end %>
