@@ -1,0 +1,12 @@
+<br>
+<br>
+<br>
+<h2>Please login</h2>
+<br>
+<%= form_tag("/login", method: "post", class: "form") do %>
+  <%= label_tag :user, 'Username:' %><br>
+  <%= text_field_tag :username %><br>
+  <%= label_tag :password, 'Password:' %><br>
+  <%= password_field_tag :password %><br>
+  <%= submit_tag 'Login' %>
+<% end %>

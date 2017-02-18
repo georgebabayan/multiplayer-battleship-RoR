@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MultiplayerBattleshipRor</title>
+    <title>BattleSHEEP!!!</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Ropa+Sans" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if logged_in? == false %>
+      <nav class="nav-links">
+        <ul class="nav-ul">
+          <%= link_to "Home", root_path, class: "nav-li"%>
+          <%= link_to "Register", new_user_path, class: "nav-li" %>
+          <%= link_to "Login", login_path, class: "nav-li" %>
+          </ul>
+        </nav>
+      <% else %>
+        <nav class="nav-links">
+          <ul class="nav-ul">
+            <%= link_to "Home", root_path, class: "nav-li"%>
+            <%= link_to "Profile", user_path(current_user), class: "nav-li" %></li>
+            <%= link_to "New Game", new_fun_url,  class: "nav-li" %></li>
+            <%= link_to "Logout", logout_path, class: "nav-li" %></li>
+            </ul>
+          </nav>
+      <% end %>
     <%= yield %>
   </body>
 </html>

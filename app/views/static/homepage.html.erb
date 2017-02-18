@@ -1,0 +1,24 @@
+<div>
+	<%= image_tag "title-sheep-full.png", id: "title-img" %>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<% if current_user != nil %>
+
+	<% @funs.each do |game|%>
+		<% if game.open_game? == true %>
+			<h2 id="worst">Join a Game - Do your WORST!!!</h2>
+			<br>
+				<div class="open">
+					<%= image_tag "hand-grenade-open.png", class: "open-img" %>
+					<span class="open-link">
+						<p>Play against <%= game.player1.username %>!!! Destroy their sheep!</p>
+						<%= link_to "Join Game", fun_path(game), class: "list-open"  %>
+					</span>
+				</div>
+			<% end %>
+		<% end %>
+<% end %>
