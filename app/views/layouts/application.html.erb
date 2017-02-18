@@ -22,12 +22,12 @@
         <nav class="nav-links">
           <ul class="nav-ul">
             <%= link_to "Home", root_path, class: "nav-li"%>
-            <%= link_to "Profile", user_path(current_user), class: "nav-li" %>
-            <%= link_to "New Game", @game, class: "nav-li" %>
-            <%= link_to "Logout", logout_path, class: "nav-li" %>
+            <%= link_to "Profile", user_path(current_user), class: "nav-li" %></li>
+            <%= link_to "New Game", new_fun_url,  class: "nav-li" %></li>
+            <%= link_to "Logout", logout_path, class: "nav-li" %></li>
             </ul>
           </nav>
       <% end %>
-    <%= yield %>
+    <%= yield %
   </body>
 </html>
