@@ -10,44 +10,119 @@
 
         <% if current_user.username == @fun.player1.username %>
 
-        <p> ENEMY FIELD<p>
-          <p>
-            board2_display
-          </p>
+        <p> ENEMY FIELD - board2_display<p>
+          <table>
+              <tr>
+                <th></th>
+                <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>F</th>
+              </tr>
+              <% @fun.board2_display.each_with_index do |row, index| %>
+              <tr>
+                <th><%= index %></th>
+                <% row.each do |cel| %>
+                  <td>
+                    <% if cel == "grass" %>
+                      <%= image_tag "grass_board.png"%>
+                    <% elsif cel == "sheep" %>
+                      <%= image_tag "sheep-white-board.png"%>
+                    <% elsif cel == "miss_ground" %>
+                      <%= image_tag "sheep-white-board.png"%>
+                    <% elsif cel == "dead_sheep" %>
+                      <%= image_tag "sheep-black-board.png"%>
+                    <% end %>
+                  </td>
+                  <% end %>
+              </tr>
+              <% end %>
+          </table>
 
-          <% @fun.board2_display.each do |row| %>
-          <%= row %>
-          <br>
-          <% end %>
-          <br>
+
+
+
+
+
+
                 <p> YOUR FIELD<p>
-                  <p>
-                    board1
-                  </p>
+                  <p>board1</p>
 
-                <% @fun.board1.each do |row| %>
-                <%= row %><br>
-                <% end %>
-                <br>
+                  <table>
+                      <tr>
+                        <th></th>
+                        <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>F</th>
+                      </tr>
+                      <% @fun.board1.each_with_index do |row, index| %>
+                      <tr>
+                        <th><%= index %></th>
+                        <% row.each do |cel| %>
+                          <td>
+                            <% if cel == "grass" %>
+                              <%= image_tag "grass_board.png"%>
+                            <% elsif cel == "sheep" %>
+                              <%= image_tag "sheep-white-board.png"%>
+                            <% elsif cel == "miss_ground" %>
+                              <%= image_tag "sheep-white-board.png"%>
+                            <% elsif cel == "dead_sheep" %>
+                              <%= image_tag "sheep-black-board.png"%>
+                            <% end %>
+                          </td>
+                          <% end %>
+                      </tr>
+                      <% end %>
+                  </table>
 
        <% end %>
       <% if current_user.username == @fun.player2.username %>
           <br>
-          <p> ENEMY FIELD<p>
-            <p>
-              board1_display
-            </p>
-          <% @fun.board1_display.each do |row| %>
-          <%= row %><br>
-
-      <% end %>
-      <p> YOUR FIELD<p>
-        <p>
-          board2
-        </p>
-        <% @fun.board2.each do |row| %>
-        <%= row %><br>
-        <% end %>
+          <p> ENEMY FIELD - board1_display<p>
+            <table>
+                <tr>
+                  <th></th>
+                  <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>F</th>
+                </tr>
+                <% @fun.board1_display.each_with_index do |row, index| %>
+                <tr>
+                  <th><%= index %></th>
+                  <% row.each do |cel| %>
+                    <td>
+                      <% if cel == "grass" %>
+                        <%= image_tag "grass_board.png"%>
+                      <% elsif cel == "sheep" %>
+                        <%= image_tag "sheep-white-board.png"%>
+                      <% elsif cel == "miss_ground" %>
+                        <%= image_tag "sheep-white-board.png"%>
+                      <% elsif cel == "dead_sheep" %>
+                        <%= image_tag "sheep-black-board.png"%>
+                      <% end %>
+                    </td>
+                    <% end %>
+                </tr>
+                <% end %>
+            </table>
+      <p> YOUR FIELD - board2 <p>
+        <table>
+            <tr>
+              <th></th>
+              <th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>F</th>
+            </tr>
+            <% @fun.board2.each_with_index do |row, index| %>
+            <tr>
+              <th><%= index %></th>
+              <% row.each do |cel| %>
+                <td>
+                  <% if cel == "grass" %>
+                    <%= image_tag "grass_board.png"%>
+                  <% elsif cel == "sheep" %>
+                    <%= image_tag "sheep-white-board.png"%>
+                  <% elsif cel == "miss_ground" %>
+                    <%= image_tag "sheep-white-board.png"%>
+                  <% elsif cel == "dead_sheep" %>
+                    <%= image_tag "sheep-black-board.png"%>
+                  <% end %>
+                </td>
+                <% end %>
+            </tr>
+            <% end %>
+        </table>
         <br>
 
       <% end %>
