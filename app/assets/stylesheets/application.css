@@ -62,6 +62,9 @@ input[type=text], input[type=username], input[type=password], input[type=textare
   padding: 5px 50px 35px 50px;
   border-radius: 25px;
   background-color: #D0F0E2;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .list-open {
@@ -98,4 +101,10 @@ input[type=text], input[type=username], input[type=password], input[type=textare
   font-family: 'Ropa Sans', sans-serif;
   color: #26B475;
   margin-left: 2%;
+  text-align: center;
+
+}
+
+.center {
+  text-align: center;
 }
