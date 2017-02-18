@@ -18,11 +18,29 @@ class FunsController < ApplicationController
 
 	def update
 		@fun = Fun.find(params[:id])
-		position = [params[:X].to_i, params[:Y].to_i]
-		 @fun.sheep_shooter(position, @fun.board1)
-		 @fun.sheep_shooter(position, @fun.board2_display)
-		 @fun.save
-		 redirect_to "/funs/#{@fun.id}"
+		if params[:size_ship]
+			s_p = [params[:s_p_x].to_i, params[:s_p_y].to_i]
+
+			if current_user.username == @fun.player1.username
+				args = {'size_ship' => params[:size_ship].to_i, 'direction' => params[:direction], 's_p' => s_p, 'board' => @fun.board1}
+			else
+				args = {'size_ship' => params[:size_ship].to_i, 'direction' => params[:direction], 's_p' => s_p, 'board' => @fun.board2}
+			end
+
+			@fun.sheep_placer(args)
+		else
+			position = [params[:X].to_i, params[:Y].to_i]
+			if current_user.username == @fun.player1.username
+				@fun.sheep_shooter(position, @fun.board2_display)
+			else
+				@fun.sheep_shooter(position, @fun.board1_display)
+			end
+		end
+		@fun.save
+
+		redirect_to "/funs/#{@fun.id}"
+
+
 	end
 
 
