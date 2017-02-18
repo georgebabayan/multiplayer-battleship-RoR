@@ -1,6 +1,8 @@
 class Fun < ApplicationRecord
+
+
   belongs_to :player1, class_name: "User"
-  belongs_to :player2, class_name: "User"
+  belongs_to :player2, class_name: "User", optional: true
   serialize :board1, JSON
   serialize :board2, JSON
   serialize :board1_display, JSON
@@ -21,6 +23,10 @@ class Fun < ApplicationRecord
   # rows << ['Cruiser', 3,1]
   # rows << ['Destroyer', 2,2]
   # rows << ['Submarine', 1,2]
+
+  def open_game?
+     self.player2 == nil
+  end
 
   def fit_checker(args={})
     p s_p  = args["s_p"]

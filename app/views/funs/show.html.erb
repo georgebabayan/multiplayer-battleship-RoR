@@ -1,6 +1,6 @@
 <!-- <meta http-equiv="refresh" content="7" > -->
 <h1> SHOW ! </h1>
-<% if logged_in? %>
+<% if logged_in? && !@fun.open_game? %>
 <div class="left-board">
     <%= current_user.username %> <br>
 

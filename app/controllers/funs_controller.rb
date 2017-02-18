@@ -12,7 +12,13 @@ class FunsController < ApplicationController
 	end
 
 	def new
-		@message = Message.new
+		board = Array.new(10)  {Array.new(10, 'grass')}
+		@fun = Fun.new(board1: board, board2: board, board1_display: board, board2_display: board, player1: current_user)
+		if @fun.save
+			redirect_to "/funs/#{@fun.id}"
+		else
+			@fun.errors.full_messages
+		end
 	end
 
 
