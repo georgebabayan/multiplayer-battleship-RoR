@@ -34,6 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'hirb'
 
+
+gem 'chronic'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
