@@ -1,7 +1,5 @@
 <meta http-equiv="refresh" content="7" >
-<br>
-<br>
-<br>
+<br><br><br>
 
 <h1> SHOW ! </h1>
 <% if logged_in? && !@fun.open_game? %>
@@ -10,17 +8,14 @@
 
         <% if current_user.username == @fun.player1.username %>
 
-        <p> ENEMY FIELD<p>
-          <p>
-            board2_display
-          </p>
+        <p> ENEMY FIELD</p>
+        <p> board2_display</p>
 
           <% @fun.board2_display.each do |row| %>
-          <%= row %>
-          <br>
+          <%= row %><br>
           <% end %>
           <br>
-                <p> YOUR FIELD<p>
+                <p> YOUR FIELD</p>
                   <p>
                     board1
                   </p>

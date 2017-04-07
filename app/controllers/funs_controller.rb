@@ -5,10 +5,8 @@ class FunsController < ApplicationController
 	end
 
 	def show
-
 		@fun = Fun.find(params[:id])
 		@user = current_user
-
 	end
 
 	def new
@@ -43,16 +41,6 @@ class FunsController < ApplicationController
 			end
 		end
 		@fun.save
-
 		redirect_to "/funs/#{@fun.id}"
-
-
 	end
-
-
-
 end
-
-# need to display board with all grass
-# updates on click
-# saves

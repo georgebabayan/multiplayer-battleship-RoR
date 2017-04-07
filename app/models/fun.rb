@@ -25,7 +25,7 @@ class Fun < ApplicationRecord
   # rows << ['Submarine', 1,2]
 
   def open_game?
-     self.player2 == nil
+    self.player2 == nil
   end
 
   def fit_checker(args={})
@@ -33,10 +33,11 @@ class Fun < ApplicationRecord
     p direction = args["direction"]
     p size_ship = args["size_ship"]
     p board = args["board"]
-return true
-    if  direction == 'right'  && ((s_p[0] + size_ship) > board.size)
+    return true
+
+    if (direction == 'right') && ((s_p[0] + size_ship) > board.size)
       return false
-    elsif  direction == 'down'  && ((s_p[1].to_i + size_ship) > board.size)
+    elsif (direction == 'down') && ((s_p[1].to_i + size_ship) > board.size)
       return false
     end
 
@@ -48,14 +49,13 @@ return true
 
   end
 
-#args={"s_p" => [0,0],"direction"=>"right", "size_ship"=>4, 'board' => Fun.last.board2_display }
+  #args={"s_p" => [0,0],"direction"=>"right", "size_ship"=>4, 'board' => Fun.last.board2_display }
   def sheep_placer(args={})
     if fit_checker(args)
       p s_p  = args["s_p"]
       p direction = args["direction"]
       p size_ship = args["size_ship"]
       p board = args["board"]
-
 
       row=s_p[0].to_i; col=s_p[1].to_i
       if direction == "down" || direction == 0
@@ -101,10 +101,5 @@ return true
     end
     total_number_of_sheep < count
   end
-
-  def winner?
-  end
-
-
 
 end
