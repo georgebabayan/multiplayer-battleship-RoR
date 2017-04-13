@@ -7,6 +7,10 @@ class FunsController < ApplicationController
   def show
     @fun = Fun.find(params[:id])
     @user = current_user
+    if ((@fun.player2_id == nil) && (@fun.player2_id != @user.id))
+      @fun.player2_id = @user.id
+      @fun.save
+    end
   end
 
   def new

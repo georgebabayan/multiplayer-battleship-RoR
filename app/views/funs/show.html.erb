@@ -1,13 +1,10 @@
-<meta http-equiv="refresh" content="7" >
 <br><br><br>
 
 <h1> SHOW ! </h1>
 <% if logged_in? && !@fun.open_game? %>
 <div class="left-board">
     <%= current_user.username %> <br>
-
-        <% if current_user.username == @fun.player1.username %>
-
+        <% if current_user.id == @fun.player1.id %>
         <p> ENEMY FIELD</p>
         <p> board2_display</p>
 
@@ -26,7 +23,7 @@
                 <br>
 
        <% end %>
-      <% if current_user.username == @fun.player2.username %>
+      <% if current_user.id == @fun.player2.id %>
           <br>
           <p> ENEMY FIELD<p>
             <p>
@@ -50,7 +47,7 @@
 
 
 <div class="right-board">
-<% if current_user.username == @fun.player1.username %>
+<% if current_user.id == @fun.player1.id %>
 
   <% if (@fun.sheep_on_board?(@fun.board1) == false) %>
   <p >FORM </p >
@@ -106,7 +103,7 @@
   <% end %>
 <% end %>
 
-  <% if current_user.username == @fun.player2.username %>
+  <% if current_user.id == @fun.player2.id %>
     <% if (@fun.sheep_on_board?(@fun.board2) == false) %>
 
 

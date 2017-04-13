@@ -23,13 +23,14 @@ class Fun < ApplicationRecord
   end
 
   def fit_checker(args = {})
-    p s_p = args['s_p']
-    p direction = args['direction']
-    p size_ship = args['size_ship']
-    p board = args['board']
-    return true
 
-    if (direction == 'right') && ((s_p[0] + size_ship) > board.size)
+     s_p = args['s_p']
+     direction = args['direction']
+     size_ship = args['size_ship'].to_i
+     board = args['board']
+    # return true
+
+    if (direction == 'right') && ((s_p[0].to_i + size_ship) > board.size)
       return false
     elsif (direction == 'down') && ((s_p[1].to_i + size_ship) > board.size)
       return false
@@ -45,10 +46,10 @@ class Fun < ApplicationRecord
   # args={"s_p" => [0,0],"direction"=>"right", "size_ship"=>4, 'board' => Fun.last.board2_display }
   def sheep_placer(args = {})
     if fit_checker(args)
-      p s_p = args['s_p']
-      p direction = args['direction']
-      p size_ship = args['size_ship']
-      p board = args['board']
+       s_p = args['s_p']
+       direction = args['direction']
+       size_ship = args['size_ship']
+       board = args['board']
 
       row = s_p[0].to_i; col = s_p[1].to_i
       if direction == 'down' || direction == 0
