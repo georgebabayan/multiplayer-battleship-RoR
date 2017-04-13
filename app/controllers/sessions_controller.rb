@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   def new
     render 'new'
   end
@@ -11,15 +10,13 @@ class SessionsController < ApplicationController
       login(@user)
       redirect_to @user
     else
-      @errors = "Your username or password are invalid"
+      @errors = 'Your username or password are invalid'
       render :new
     end
   end
 
   def delete
     logout
-
     redirect_to root_path
   end
-
 end
